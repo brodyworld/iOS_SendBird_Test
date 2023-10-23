@@ -9,10 +9,10 @@ import Foundation
 import Moya
 
 public enum SendbirdRouter {
-    case getUsers(nickname: String)
-    case getUser(userId: String)
-    case createUser(params: UserCreationParams)
-    case updateUser(params: UserUpdateParams)
+    case getUsers(nickname: String, apiToken: String, appId: String)
+    case getUser(userId: String, apiToken: String, appId: String)
+    case createUser(params: UserCreationParams, apiToken: String, appId: String)
+    case updateUser(params: UserUpdateParams, apiToken: String, appId: String)
 }
 
 // BRODY : 중간에 아이디 바뀌면 apiToken, baseURL다 바뀌어야 됨.
@@ -20,11 +20,35 @@ public enum SendbirdRouter {
 // 번거롭지만 Request할 때 apiToken과 appID를 넣어야 될듯
 // 장점 : 5개의 Update 요청을 보내고 계정바꿔서 2개의 Update 요청을 보내면 각각의 appID가 잘 update 될것임.
 extension SendbirdRouter: TargetType {
-    
-    var apiToken: String { "f0964228b82d8b0b39497b2fe5261af0774fe4ce" }
+
+    var apiToken: String {
+        
+        switch self {
+        case .getUsers(_, let apiToken, _):
+            return apiToken
+        case .getUser(_, let apiToken, _):
+            return apiToken
+        case .createUser(_, let apiToken, _):
+            return apiToken
+        case .updateUser(_, let apiToken, _):
+            return apiToken
+        }
+    }
     
     public var baseURL: URL {
-        guard let url = URL(string: "https://api-E30DE0C6-7F1D-4786-8A4D-795356ADC731.sendbird.com/v3") else { fatalError("Server URL convert Error") }
+        var applicationId = ""
+        switch self {
+        case .getUsers(_, _, let appId):
+            applicationId = appId
+        case .getUser(_, _, let appId):
+            applicationId = appId
+        case .createUser(_, _, let appId):
+            applicationId = appId
+        case .updateUser(_, _, let appId):
+            applicationId = appId
+        }
+        
+        guard let url = URL(string: "https://api-\(applicationId).sendbird.com/v3") else { fatalError("Server URL convert Error") }
         return url
     }
     
@@ -32,11 +56,11 @@ extension SendbirdRouter: TargetType {
         switch self {
         case .getUsers:
             return "/users"
-        case .getUser(let userId):
+        case .getUser(let userId, _, _):
             return "/users/\(userId)"
         case .createUser:
             return "/users"
-        case .updateUser(let params):
+        case .updateUser(let params, _, _):
             return "/users/\(params.userId)"
         }
     }
@@ -56,7 +80,7 @@ extension SendbirdRouter: TargetType {
     
     public var task: Moya.Task {
         switch self {
-        case .getUsers(let nickname):
+        case .getUsers(let nickname, _, _):
             var parameters = [String: Any]()
             
             if nickname.count > 0 {
@@ -67,7 +91,7 @@ extension SendbirdRouter: TargetType {
 
         case .getUser:
             return .requestPlain
-        case .createUser(let params):
+        case .createUser(let params, _, _):
             let parameters = [
                 "user_id": params.userId,
                 "nickname": params.nickname,
@@ -76,7 +100,7 @@ extension SendbirdRouter: TargetType {
 
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
 
-        case .updateUser(let params):
+        case .updateUser(let params, _, _):
             var parameters = [
                 "user_id": params.userId
             ]

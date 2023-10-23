@@ -13,8 +13,8 @@ class UserManagerImplement: SBUserManager {
     var networkClient: SBNetworkClient
     var userStorage: SBUserStorage
     
-    var applicationId: String?
-    var apiToken: String?
+    var applicationId: String = "E30DE0C6-7F1D-4786-8A4D-795356ADC731" // default
+    var apiToken: String = "f0964228b82d8b0b39497b2fe5261af0774fe4ce" // default
     
     static let shared = UserManagerImplement()
     
@@ -29,7 +29,7 @@ class UserManagerImplement: SBUserManager {
     }
     
     func createUser(params: UserCreationParams, completionHandler: ((UserResult) -> Void)?) {
-        networkClient.request(request: CreateUserRequest(router: .createUser(params: params))) { result in
+        networkClient.request(request: CreateUserRequest(router: .createUser(params: params, apiToken: self.apiToken, appId: self.applicationId))) { result in
             switch result {
             case .success(let userEntity):
                 completionHandler?(.success(SBUser(userId: userEntity.userId, nickname: userEntity.nickname, profileURL: userEntity.profileURL)))
@@ -51,7 +51,7 @@ class UserManagerImplement: SBUserManager {
             
             for param in params {
                 do {
-                    let createUserResponse = await networkClient.request(request: CreateUserRequest(router: .createUser(params: param)))
+                    let createUserResponse = await networkClient.request(request: CreateUserRequest(router: .createUser(params: param, apiToken: self.apiToken, appId: self.applicationId)))
                     switch createUserResponse {
                     case .success(let userEntity):
                         createUsers.append(SBUser(userId: userEntity.userId, nickname: userEntity.nickname, profileURL: userEntity.profileURL))
@@ -69,7 +69,7 @@ class UserManagerImplement: SBUserManager {
     }
     
     func updateUser(params: UserUpdateParams, completionHandler: ((UserResult) -> Void)?) {
-        networkClient.request(request: UpdateUserRequest(router: .updateUser(params: params))) { result in
+        networkClient.request(request: UpdateUserRequest(router: .updateUser(params: params, apiToken: self.apiToken, appId: self.applicationId))) { result in
             switch result {
             case .success(let userEntity):
                 completionHandler?(.success(SBUser(userId: userEntity.userId, nickname: userEntity.nickname, profileURL: userEntity.profileURL)))
@@ -80,7 +80,7 @@ class UserManagerImplement: SBUserManager {
     }
     
     func getUser(userId: String, completionHandler: ((UserResult) -> Void)?) {
-        networkClient.request(request: GetUserRequest(router: .getUser(userId: userId))) { result in
+        networkClient.request(request: GetUserRequest(router: .getUser(userId: userId, apiToken: self.apiToken, appId: self.applicationId))) { result in
             switch result {
             case .success(let userEntity):
                 completionHandler?(.success(SBUser(userId: userEntity.userId, nickname: userEntity.nickname, profileURL: userEntity.profileURL)))
@@ -95,7 +95,7 @@ class UserManagerImplement: SBUserManager {
             completionHandler?(.failure(SBError.userListNicknameEmptyError))
             return
         }
-        networkClient.request(request: GetUsersRequest(router: .getUsers(nickname: nicknameMatches))) { result in
+        networkClient.request(request: GetUsersRequest(router: .getUsers(nickname: nicknameMatches, apiToken: self.apiToken, appId: self.applicationId))) { result in
             switch result {
             case .success(let userListEntity):
                 completionHandler?(.success(userListEntity.users.map{ SBUser(userId: $0.userId, nickname: $0.nickname, profileURL: $0.profileURL) }))

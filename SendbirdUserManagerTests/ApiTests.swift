@@ -13,6 +13,9 @@ final class ApiTests: XCTestCase {
     let provider = MoyaProvider<SendbirdRouter>(plugins: [NetworkLoggerPlugin()])
     let timeout: TimeInterval = 5
 
+    var applicationId: String = "E30DE0C6-7F1D-4786-8A4D-795356ADC731" // default
+    var apiToken: String = "f0964228b82d8b0b39497b2fe5261af0774fe4ce" // default
+
     func testsCustom() {
         let userManager = UserManagerImplement()
 //        let expectation = self.expectation(description: "Wait for Create User API")
@@ -45,7 +48,7 @@ final class ApiTests: XCTestCase {
         let params = UserCreationParams(userId: Date().description, nickname: "John Doe", profileURL: nil)
 //        let params = UserCreationParams(userId: "4000", nickname: "John Doe", profileURL: nil)
 
-        provider.request(.createUser(params: params)) { result in
+        provider.request(.createUser(params: params, apiToken: self.apiToken, appId: self.applicationId)) { result in
             
             switch result {
             case .success(let response):
@@ -71,7 +74,7 @@ final class ApiTests: XCTestCase {
     func testGetUserAPI() {
         let expectation = self.expectation(description: "Wait for Read User API")
             
-        provider.request(.getUser(userId: "1")) { result in
+        provider.request(.getUser(userId: "1", apiToken: self.apiToken, appId: self.applicationId)) { result in
             switch result {
             case .success(let response):
                 print(String(data: response.data, encoding: .utf8))
@@ -99,7 +102,7 @@ final class ApiTests: XCTestCase {
 
         let params = UserUpdateParams(userId: "1", nickname: Date().description, profileURL: nil)
 
-        provider.request(.updateUser(params: params)) { result in
+        provider.request(.updateUser(params: params, apiToken: self.apiToken, appId: self.applicationId)) { result in
             
             switch result {
             case .success(let response):
@@ -125,7 +128,7 @@ final class ApiTests: XCTestCase {
     func testsGetUsersAPI() {
         let expectation = self.expectation(description: "Wait for Read User List API")
             
-        provider.request(.getUsers(nickname: "John Doe")) { result in
+        provider.request(.getUsers(nickname: "John Doe", apiToken: self.apiToken, appId: self.applicationId)) { result in
             switch result {
             case .success(let response):
                 print(String(data: response.data, encoding: .utf8))
