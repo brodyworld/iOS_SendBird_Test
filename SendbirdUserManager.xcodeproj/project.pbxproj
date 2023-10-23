@@ -1,0 +1,710 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52347BE62ADA63F200AC2D94 /* SendbirdUserManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52347BDD2ADA63F100AC2D94 /* SendbirdUserManager.framework */; };
+		52347BEB2ADA63F200AC2D94 /* SendbirdUserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52347BEA2ADA63F200AC2D94 /* SendbirdUserManagerTests.swift */; };
+		52347BF92ADA63FB00AC2D94 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52347BF62ADA63FB00AC2D94 /* Models.swift */; };
+		52347BFA2ADA63FB00AC2D94 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52347BF72ADA63FB00AC2D94 /* NetworkClient.swift */; };
+		52347BFB2ADA63FB00AC2D94 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52347BF82ADA63FB00AC2D94 /* UserStorage.swift */; };
+		52347BFC2ADA63FB00AC2D94 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52347BF52ADA63FB00AC2D94 /* UserManager.swift */; };
+		52347C092ADA6C3500AC2D94 /* UserStorageBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52347C082ADA6C3500AC2D94 /* UserStorageBaseTests.swift */; };
+		52CD185E2ADACE5E0097F9E1 /* UserManagerBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD185D2ADACE5E0097F9E1 /* UserManagerBaseTests.swift */; };
+		B25C13032AE35D3B00B7CD78 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = B25C13022AE35D3B00B7CD78 /* Moya */; };
+		B25C130A2AE35FC400B7CD78 /* SendbirdRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C13092AE35FC400B7CD78 /* SendbirdRouter.swift */; };
+		B25C130D2AE360DF00B7CD78 /* UserManagerImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C130C2AE360DF00B7CD78 /* UserManagerImplement.swift */; };
+		B25C130F2AE3617500B7CD78 /* UserStorageImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C130E2AE3617500B7CD78 /* UserStorageImplement.swift */; };
+		B25C13112AE3619600B7CD78 /* NetworkClientImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C13102AE3619600B7CD78 /* NetworkClientImplement.swift */; };
+		B25C13132AE3683000B7CD78 /* ApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C13122AE3683000B7CD78 /* ApiTests.swift */; };
+		B25C13162AE36A3000B7CD78 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C13152AE36A3000B7CD78 /* UserEntity.swift */; };
+		B282F52B2AE3B88D00A9A27F /* JSONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F52A2AE3B88D00A9A27F /* JSONDecoder+Extension.swift */; };
+		B282F52D2AE3B97400A9A27F /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F52C2AE3B97400A9A27F /* APIError.swift */; };
+		B282F5312AE3BE3E00A9A27F /* UserListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F5302AE3BE3E00A9A27F /* UserListEntity.swift */; };
+		B282F5332AE3CCD600A9A27F /* MoyaProvider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F5322AE3CCD600A9A27F /* MoyaProvider+Extension.swift */; };
+		B282F5372AE3FDFF00A9A27F /* UserManagerBase2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F5362AE3FDFF00A9A27F /* UserManagerBase2Tests.swift */; };
+		B282F53A2AE3FF6B00A9A27F /* SBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F5392AE3FF6B00A9A27F /* SBError.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52347BE72ADA63F200AC2D94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52347BD42ADA63F100AC2D94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52347BDC2ADA63F100AC2D94;
+			remoteInfo = SendbirdUserManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		522B6D982ADAC21300FEE2B4 /* SendbirdUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendbirdUserManager.h; sourceTree = "<group>"; };
+		52347BDD2ADA63F100AC2D94 /* SendbirdUserManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SendbirdUserManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52347BE52ADA63F200AC2D94 /* SendbirdUserManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SendbirdUserManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52347BEA2ADA63F200AC2D94 /* SendbirdUserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendbirdUserManagerTests.swift; sourceTree = "<group>"; };
+		52347BF52ADA63FB00AC2D94 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		52347BF62ADA63FB00AC2D94 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		52347BF72ADA63FB00AC2D94 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		52347BF82ADA63FB00AC2D94 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		52347C082ADA6C3500AC2D94 /* UserStorageBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageBaseTests.swift; sourceTree = "<group>"; };
+		52CD185D2ADACE5E0097F9E1 /* UserManagerBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerBaseTests.swift; sourceTree = "<group>"; };
+		B25C13092AE35FC400B7CD78 /* SendbirdRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendbirdRouter.swift; sourceTree = "<group>"; };
+		B25C130C2AE360DF00B7CD78 /* UserManagerImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerImplement.swift; sourceTree = "<group>"; };
+		B25C130E2AE3617500B7CD78 /* UserStorageImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageImplement.swift; sourceTree = "<group>"; };
+		B25C13102AE3619600B7CD78 /* NetworkClientImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientImplement.swift; sourceTree = "<group>"; };
+		B25C13122AE3683000B7CD78 /* ApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTests.swift; sourceTree = "<group>"; };
+		B25C13152AE36A3000B7CD78 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		B282F52A2AE3B88D00A9A27F /* JSONDecoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extension.swift"; sourceTree = "<group>"; };
+		B282F52C2AE3B97400A9A27F /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		B282F5302AE3BE3E00A9A27F /* UserListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListEntity.swift; sourceTree = "<group>"; };
+		B282F5322AE3CCD600A9A27F /* MoyaProvider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+Extension.swift"; sourceTree = "<group>"; };
+		B282F5342AE3FA2100A9A27F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B282F5362AE3FDFF00A9A27F /* UserManagerBase2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerBase2Tests.swift; sourceTree = "<group>"; };
+		B282F5392AE3FF6B00A9A27F /* SBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBError.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52347BDA2ADA63F100AC2D94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B25C13032AE35D3B00B7CD78 /* Moya in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52347BE22ADA63F200AC2D94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52347BE62ADA63F200AC2D94 /* SendbirdUserManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		52347BD32ADA63F100AC2D94 = {
+			isa = PBXGroup;
+			children = (
+				52347BDF2ADA63F100AC2D94 /* SendbirdUserManager */,
+				52347BE92ADA63F200AC2D94 /* SendbirdUserManagerTests */,
+				52347BDE2ADA63F100AC2D94 /* Products */,
+				52347C012ADA648100AC2D94 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		52347BDE2ADA63F100AC2D94 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52347BDD2ADA63F100AC2D94 /* SendbirdUserManager.framework */,
+				52347BE52ADA63F200AC2D94 /* SendbirdUserManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52347BDF2ADA63F100AC2D94 /* SendbirdUserManager */ = {
+			isa = PBXGroup;
+			children = (
+				52347C002ADA646F00AC2D94 /* Tests */,
+				B282F5282AE3B87300A9A27F /* Base */,
+				B25C13052AE35F9200B7CD78 /* DataLayer */,
+				B25C13042AE35D4B00B7CD78 /* RepositoryLayer */,
+				52347BFD2ADA644F00AC2D94 /* Requirements */,
+				522B6D982ADAC21300FEE2B4 /* SendbirdUserManager.h */,
+				B282F5342AE3FA2100A9A27F /* README.md */,
+			);
+			path = SendbirdUserManager;
+			sourceTree = "<group>";
+		};
+		52347BE92ADA63F200AC2D94 /* SendbirdUserManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				B282F5352AE3FDF200A9A27F /* Custom */,
+				52347BEA2ADA63F200AC2D94 /* SendbirdUserManagerTests.swift */,
+				B25C13122AE3683000B7CD78 /* ApiTests.swift */,
+			);
+			path = SendbirdUserManagerTests;
+			sourceTree = "<group>";
+		};
+		52347BFD2ADA644F00AC2D94 /* Requirements */ = {
+			isa = PBXGroup;
+			children = (
+				B25C130B2AE360AF00B7CD78 /* Implements */,
+				52347BF62ADA63FB00AC2D94 /* Models.swift */,
+				52347BF52ADA63FB00AC2D94 /* UserManager.swift */,
+				52347BF72ADA63FB00AC2D94 /* NetworkClient.swift */,
+				52347BF82ADA63FB00AC2D94 /* UserStorage.swift */,
+			);
+			path = Requirements;
+			sourceTree = "<group>";
+		};
+		52347C002ADA646F00AC2D94 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				52347C082ADA6C3500AC2D94 /* UserStorageBaseTests.swift */,
+				52CD185D2ADACE5E0097F9E1 /* UserManagerBaseTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		52347C012ADA648100AC2D94 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B25C13042AE35D4B00B7CD78 /* RepositoryLayer */ = {
+			isa = PBXGroup;
+			children = (
+				B25C13062AE35FA500B7CD78 /* Usecase */,
+			);
+			path = RepositoryLayer;
+			sourceTree = "<group>";
+		};
+		B25C13052AE35F9200B7CD78 /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				B25C13142AE36A0F00B7CD78 /* Entities */,
+				B25C13082AE35FB500B7CD78 /* Network Routers */,
+				B25C13072AE35FAF00B7CD78 /* Repositories */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
+		B25C13062AE35FA500B7CD78 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		B25C13072AE35FAF00B7CD78 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		B25C13082AE35FB500B7CD78 /* Network Routers */ = {
+			isa = PBXGroup;
+			children = (
+				B25C13092AE35FC400B7CD78 /* SendbirdRouter.swift */,
+			);
+			path = "Network Routers";
+			sourceTree = "<group>";
+		};
+		B25C130B2AE360AF00B7CD78 /* Implements */ = {
+			isa = PBXGroup;
+			children = (
+				B25C130C2AE360DF00B7CD78 /* UserManagerImplement.swift */,
+				B25C130E2AE3617500B7CD78 /* UserStorageImplement.swift */,
+				B25C13102AE3619600B7CD78 /* NetworkClientImplement.swift */,
+			);
+			path = Implements;
+			sourceTree = "<group>";
+		};
+		B25C13142AE36A0F00B7CD78 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				B25C13152AE36A3000B7CD78 /* UserEntity.swift */,
+				B282F5302AE3BE3E00A9A27F /* UserListEntity.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		B282F5282AE3B87300A9A27F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B282F5382AE3FF6000A9A27F /* Error */,
+				B282F5292AE3B87700A9A27F /* Extension */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B282F5292AE3B87700A9A27F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B282F52A2AE3B88D00A9A27F /* JSONDecoder+Extension.swift */,
+				B282F5322AE3CCD600A9A27F /* MoyaProvider+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B282F5352AE3FDF200A9A27F /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				B282F5362AE3FDFF00A9A27F /* UserManagerBase2Tests.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		B282F5382AE3FF6000A9A27F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				B282F52C2AE3B97400A9A27F /* APIError.swift */,
+				B282F5392AE3FF6B00A9A27F /* SBError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		52347BD82ADA63F100AC2D94 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		52347BDC2ADA63F100AC2D94 /* SendbirdUserManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52347BEF2ADA63F200AC2D94 /* Build configuration list for PBXNativeTarget "SendbirdUserManager" */;
+			buildPhases = (
+				52347BD82ADA63F100AC2D94 /* Headers */,
+				52347BD92ADA63F100AC2D94 /* Sources */,
+				52347BDA2ADA63F100AC2D94 /* Frameworks */,
+				52347BDB2ADA63F100AC2D94 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SendbirdUserManager;
+			packageProductDependencies = (
+				B25C13022AE35D3B00B7CD78 /* Moya */,
+			);
+			productName = SendbirdUserManager;
+			productReference = 52347BDD2ADA63F100AC2D94 /* SendbirdUserManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		52347BE42ADA63F200AC2D94 /* SendbirdUserManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52347BF22ADA63F200AC2D94 /* Build configuration list for PBXNativeTarget "SendbirdUserManagerTests" */;
+			buildPhases = (
+				52347BE12ADA63F200AC2D94 /* Sources */,
+				52347BE22ADA63F200AC2D94 /* Frameworks */,
+				52347BE32ADA63F200AC2D94 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52347BE82ADA63F200AC2D94 /* PBXTargetDependency */,
+			);
+			name = SendbirdUserManagerTests;
+			productName = SendbirdUserManagerTests;
+			productReference = 52347BE52ADA63F200AC2D94 /* SendbirdUserManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52347BD42ADA63F100AC2D94 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					52347BDC2ADA63F100AC2D94 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					52347BE42ADA63F200AC2D94 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = 52347BD72ADA63F100AC2D94 /* Build configuration list for PBXProject "SendbirdUserManager" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 52347BD32ADA63F100AC2D94;
+			packageReferences = (
+				B25C13012AE35D3B00B7CD78 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
+			productRefGroup = 52347BDE2ADA63F100AC2D94 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52347BDC2ADA63F100AC2D94 /* SendbirdUserManager */,
+				52347BE42ADA63F200AC2D94 /* SendbirdUserManagerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52347BDB2ADA63F100AC2D94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52347BE32ADA63F200AC2D94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52347BD92ADA63F100AC2D94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B25C13162AE36A3000B7CD78 /* UserEntity.swift in Sources */,
+				B282F5332AE3CCD600A9A27F /* MoyaProvider+Extension.swift in Sources */,
+				B25C130A2AE35FC400B7CD78 /* SendbirdRouter.swift in Sources */,
+				52347BF92ADA63FB00AC2D94 /* Models.swift in Sources */,
+				B25C130F2AE3617500B7CD78 /* UserStorageImplement.swift in Sources */,
+				52CD185E2ADACE5E0097F9E1 /* UserManagerBaseTests.swift in Sources */,
+				52347BFA2ADA63FB00AC2D94 /* NetworkClient.swift in Sources */,
+				B282F53A2AE3FF6B00A9A27F /* SBError.swift in Sources */,
+				B282F52B2AE3B88D00A9A27F /* JSONDecoder+Extension.swift in Sources */,
+				B25C13112AE3619600B7CD78 /* NetworkClientImplement.swift in Sources */,
+				B25C130D2AE360DF00B7CD78 /* UserManagerImplement.swift in Sources */,
+				52347BFC2ADA63FB00AC2D94 /* UserManager.swift in Sources */,
+				52347C092ADA6C3500AC2D94 /* UserStorageBaseTests.swift in Sources */,
+				B282F5312AE3BE3E00A9A27F /* UserListEntity.swift in Sources */,
+				52347BFB2ADA63FB00AC2D94 /* UserStorage.swift in Sources */,
+				B282F52D2AE3B97400A9A27F /* APIError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52347BE12ADA63F200AC2D94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B25C13132AE3683000B7CD78 /* ApiTests.swift in Sources */,
+				B282F5372AE3FDFF00A9A27F /* UserManagerBase2Tests.swift in Sources */,
+				52347BEB2ADA63F200AC2D94 /* SendbirdUserManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52347BE82ADA63F200AC2D94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52347BDC2ADA63F100AC2D94 /* SendbirdUserManager */;
+			targetProxy = 52347BE72ADA63F200AC2D94 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		52347BED2ADA63F200AC2D94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		52347BEE2ADA63F200AC2D94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		52347BF02ADA63F200AC2D94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Xlinker",
+					"-no_application_extension",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.SendbirdUserManager;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SEPARATE_SYMBOL_EDIT = NO;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		52347BF12ADA63F200AC2D94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Xlinker",
+					"-no_application_extension",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.SendbirdUserManager;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SEPARATE_SYMBOL_EDIT = NO;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		52347BF32ADA63F200AC2D94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RM4A5PXTUX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.SendbirdUserManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		52347BF42ADA63F200AC2D94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RM4A5PXTUX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.SendbirdUserManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52347BD72ADA63F100AC2D94 /* Build configuration list for PBXProject "SendbirdUserManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52347BED2ADA63F200AC2D94 /* Debug */,
+				52347BEE2ADA63F200AC2D94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52347BEF2ADA63F200AC2D94 /* Build configuration list for PBXNativeTarget "SendbirdUserManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52347BF02ADA63F200AC2D94 /* Debug */,
+				52347BF12ADA63F200AC2D94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52347BF22ADA63F200AC2D94 /* Build configuration list for PBXNativeTarget "SendbirdUserManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52347BF32ADA63F200AC2D94 /* Debug */,
+				52347BF42ADA63F200AC2D94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B25C13012AE35D3B00B7CD78 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B25C13022AE35D3B00B7CD78 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C13012AE35D3B00B7CD78 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 52347BD42ADA63F100AC2D94 /* Project object */;
+}
