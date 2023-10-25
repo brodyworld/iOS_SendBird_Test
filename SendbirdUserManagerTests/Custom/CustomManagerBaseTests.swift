@@ -1,5 +1,5 @@
 //
-//  UserManagerBase2Tests.swift
+//  CustomManagerBaseTests.swift
 //  SendbirdUserManagerTests
 //
 //  Created by Brody Byun on 2023/10/21.
@@ -8,12 +8,210 @@
 import XCTest
 @testable import SendbirdUserManager
 
-open class UserManagerBase2Tests: XCTestCase {
+open class CustomManagerBaseTests: XCTestCase {
     open func userManagerType() -> SBUserManager.Type! {
         return UserManagerImplement.self
     }
+
+    // 유저스토리지에 5개의 계정을 포함하고 있고 11개의 계정을 가져올 때 GET API는 6번만 사용하기 때문에 성공하는지 확인하는 테스트
+    public func testGetMoreTenUserWithStorage() {
+        let userManager = userManagerType().init()
+        
+        var results: [UserResult] = []
+        let dispatchGroup = DispatchGroup()
+
+        (0..<5).forEach {
+            userManager.userStorage.upsertUser(SBUser(userId: "\($0)", nickname: "nickname_\($0)"))
+        }
+        
+        (0..<11).forEach {
+            dispatchGroup.enter()
+
+            userManager.getUser(userId: "\($0)") { result in
+                switch result {
+                case .success(let user):
+                    print(user.userId)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                results.append(result)
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.wait()
+        let successResults = results.filter {
+            if case .success = $0 { return true }
+            return false
+        }
+        
+        XCTAssertEqual(successResults.count, 11)
+    }
+
+    // 제안된 테스트
+    public func testRateLimitCreateUsersModify() {
+        let userManager = userManagerType().init()
+        
+        let now = Date()
+
+        // Concurrently create 6 batches of users (to exceed the limit with 12 requests)
+        let dispatchGroup = DispatchGroup()
+        var results: [UsersResult] = []
+
+        for i in 0..<6 {
+            dispatchGroup.enter()
+            let paramsArray = [UserCreationParams(userId: "JohnDoe_0_\(now.description)_\(i)", nickname: "JohnDoe", profileURL: nil),
+                               UserCreationParams(userId: "JohnDoe_1_\(now.description)_\(i)", nickname: "JaneDoe", profileURL: nil)]
+
+            userManager.createUsers(params: paramsArray) { result in
+                results.append(result)
+                dispatchGroup.leave()
+            }
+        }
+
+        dispatchGroup.wait()
+
+        // Assess the results
+        let successResults = results.filter {
+            if case .success = $0 { return true }
+            return false
+        }
+        let rateLimitResults = results.filter {
+            if case .failure(_) = $0 { return true }
+            return false
+        }
+
+        XCTAssertEqual(successResults.count, 1) // 1 successful batch creations
+        XCTAssertEqual(rateLimitResults.count, 5) // 5 rate-limited batch creation
+    }
     
-    // AppID1 App에 연결하여 1 유저를 만든 후 AppID2 App으로 연결 후 UserStorage에 유저가 없는지 확인하는 테스트
+    public func testRateLimitCreateUserModify() {
+        let userManager = userManagerType().init()
+        
+        // Concurrently create 11 users
+        let dispatchGroup = DispatchGroup()
+        var results: [UserResult] = []
+        let now = Date()
+        
+        for i in 0..<11 {
+            dispatchGroup.enter()
+            userManager.createUser(params: UserCreationParams(userId: "\(now.description)_\(i)", nickname: "JohnDoe", profileURL: nil)) { result in
+                results.append(result)
+                dispatchGroup.leave()
+            }
+        }
+
+        dispatchGroup.wait()
+
+        // Assess the results
+        let successResults = results.filter {
+            if case .success = $0 { return true }
+            return false
+        }
+        let rateLimitResults = results.filter {
+            if case .failure(_) = $0 { return true }
+            return false
+        }
+
+        XCTAssertEqual(successResults.count, 1)
+        XCTAssertEqual(rateLimitResults.count, 10)
+
+    }
+    
+    public func testRequestMaximumLengthWithUserId() {
+        let userManager = userManagerType().init()
+        let params = UserCreationParams(userId: "가가가가가가가가가가나나나나나나나나나나다다다다다다다다다다라라라라라라라라라라가가가가가가가가가가나나나나나나나나나나다다다다다다다다다다라라라라라라라라라라123", nickname: "John Doe", profileURL: nil)
+        let expectation = self.expectation(description: "Wait for user creation")
+        
+        userManager.createUser(params: params) { result in
+            switch result {
+            case .success:
+                XCTFail("Failed with maxium length")
+            case .failure(let error):
+                XCTAssertNotNil(error)
+            }
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    public func testRequestMaximumLengthWithNickname() {
+        let userManager = userManagerType().init()
+        let params = UserCreationParams(userId: "\(Date().description)", nickname: "가가가가가가가가가가나나나나나나나나나나다다다다다다다다다다라라라라라라라라라라가가가가가가가가가가나나나나나나나나나나다다다다다다다다다다라라라라라라라라라라123", profileURL: nil)
+        let expectation = self.expectation(description: "Wait for user creation")
+        
+        userManager.createUser(params: params) { result in
+            switch result {
+            case .success:
+                XCTFail("Failed with Success")
+            case .failure(let error):
+                XCTAssertNotNil(error)
+            }
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    
+    public func testCreateUsersWithMaximumLengthError() {
+        let userManager = userManagerType().init()
+
+        let params1 = UserCreationParams(userId: "1", nickname: "John", profileURL: nil)
+        let errorParam1 = UserCreationParams(userId: "가가가가가가가가가가나나나나나나나나나나다다다다다다다다다다라라라라라라라라라라가가가가가가가가가가나나나나나나나나나나다다다다다다다다다다라라라라라라라라라라123", nickname: "John Doe", profileURL: nil)
+        let params2 = UserCreationParams(userId: "2", nickname: "Jane", profileURL: nil)
+        let errorParam2 = UserCreationParams(userId: "\(Date().description)", nickname: "가가가가가가가가가가나나나나나나나나나나다다다다다다다다다다라라라라라라라라라라가가가가가가가가가가나나나나나나나나나나다다다다다다다다다다라라라라라라라라라라123", profileURL: nil)
+        let expectation = self.expectation(description: "Wait for users creation")
+    
+        userManager.createUsers(params: [params1, errorParam1, params2, errorParam2]) { result in
+            switch result {
+            case .success:
+                XCTFail("Failed with Success")
+            case .failure(let error):
+                XCTAssertNotNil(error)
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    public func testUpdateMaximumNickname() {
+        let userManager = userManagerType().init()
+        
+        let userId = Date().description
+        let initialParams = UserCreationParams(userId: userId, nickname: "InitialName", profileURL: nil)
+        let updatedParams = UserUpdateParams(userId: userId, nickname: "가가가가가가가가가가나나나나나나나나나나다다다다다다다다다다라라라라라라라라라라가가가가가가가가가가나나나나나나나나나나다다다다다다다다다다라라라라라라라라라라123", profileURL: nil)
+        
+        let expectation = self.expectation(description: "Wait for user update")
+        
+        userManager.createUser(params: initialParams) { creationResult in
+            switch creationResult {
+            case .success(_):
+                userManager.updateUser(params: updatedParams) { updateResult in
+                    switch updateResult {
+                    case .success(let updatedUser):
+                        XCTFail("Failed with Success")
+
+                        XCTAssertEqual(updatedUser.nickname, "UpdatedName")
+                    case .failure(let error):
+                        XCTAssertNotNil(error)
+                    }
+                    expectation.fulfill()
+                }
+            case .failure(let error):
+                XCTFail("Failed with error: \(error)")
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+        
+    }
+        
+}
+
+extension CustomManagerBaseTests {
+    
     public func testInitApplicationWithDifferentAppIdClearsData() {
         let userManager = userManagerType().init()
         
@@ -51,7 +249,8 @@ open class UserManagerBase2Tests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    // Create Users 기본 테스트. (순서가 맞는지)
+    // Create Users 기본 테스트.
+    // POST는 1초에 한개만 가능하면 해당 테스트도 실패가 되어야함.(createUsers에서 1개의 user를 만드는데 한번에 2개를 Params를 넣으면 1초에 2개가 되기 때문에)
     public func testCreateUsers() {
         let userManager = userManagerType().init()
 
@@ -189,7 +388,6 @@ open class UserManagerBase2Tests: XCTestCase {
     
     // Test race condition when simultaneously trying to update and fetch a user
     // Update와 Get를 글로벌스레드로 보내면 레이스컨디션이 발생하지 않는지
-    
     public func testUpdateUserRaceCondition() {
         let userManager = userManagerType().init()
 
@@ -267,12 +465,11 @@ open class UserManagerBase2Tests: XCTestCase {
         
         wait(for: [expectation], timeout: 10.0)
     }
-    
-    // Free Trial에서는 GET은 1초에 10개까지만 가능함.
+    // GET 1초에 10개이상 하면 안되는거 필요함.
+
     public func testRateLimitGetUser() {
         let userManager = userManagerType().init()
-//        let expectation = self.expectation(description: "Wait for testRateLimitGetUser")
-
+        
         // Concurrently get user info for 11 users
         let dispatchGroup = DispatchGroup()
         var results: [UserResult] = []
@@ -291,40 +488,20 @@ open class UserManagerBase2Tests: XCTestCase {
             }
             
         }
-
         
-//        dispatchGroup.notify(queue: .main) {
-//            // 여기서 결과를 처리하거나 다음 작업을 수행합니다.
-//            let successResults = results.filter {
-//                if case .success = $0 { return true }
-//                return false
-//            }
-//            let rateLimitResults = results.filter {
-//                if case .failure(let error) = $0 { return true }
-//                return false
-//            }
-//
-//            XCTAssertEqual(successResults.count, 10)
-//            XCTAssertEqual(rateLimitResults.count, 1)
-//            expectation.fulfill()
-//        }
-//
-//        waitForExpectations(timeout: 10.0)
-
+        dispatchGroup.wait()
+        // Expect 10 successful and 1 rateLimitExceeded response
+        let successResults = results.filter {
+            if case .success = $0 { return true }
+            return false
+        }
+        let rateLimitResults = results.filter {
+            if case .failure(let error) = $0 { return true }
+            return false
+        }
         
-                    dispatchGroup.wait()
-                    // Expect 10 successful and 1 rateLimitExceeded response
-                    let successResults = results.filter {
-                        if case .success = $0 { return true }
-                        return false
-                    }
-                    let rateLimitResults = results.filter {
-                        if case .failure(let error) = $0 { return true }
-                        return false
-                    }
-        
-                    XCTAssertEqual(successResults.count, 10)
-                    XCTAssertEqual(rateLimitResults.count, 1)
+        XCTAssertEqual(successResults.count, 10)
+        XCTAssertEqual(rateLimitResults.count, 1)
     }
 
     public func testRateLimitCreateUser() {
@@ -359,6 +536,7 @@ open class UserManagerBase2Tests: XCTestCase {
         XCTAssertEqual(successResults.count, 10)
         XCTAssertEqual(rateLimitResults.count, 1)
     }
+    
     
     // 6개를 보내고 6개를 한번더 보냈으니까 10개가 넘어서 뒤에꺼 6개를 버린다?
     //

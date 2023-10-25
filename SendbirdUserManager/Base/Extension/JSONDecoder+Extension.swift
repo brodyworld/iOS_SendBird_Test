@@ -10,7 +10,6 @@ import Foundation
 extension JSONDecoder {
     func decodeResponse<T: Codable>(_ type: T.Type, from data: Data)  -> Result<T, Error> {
         do {
-            
             if let response = try? decode(T.self, from: data) {
                 return .success(response)
             } else {

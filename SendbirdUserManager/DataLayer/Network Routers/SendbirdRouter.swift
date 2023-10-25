@@ -12,23 +12,22 @@ public enum SendbirdRouter {
     case getUsers(nickname: String, apiToken: String, appId: String)
     case getUser(userId: String, apiToken: String, appId: String)
     case createUser(params: UserCreationParams, apiToken: String, appId: String)
+    case createUsers(params: [UserCreationParams], apiToken: String, appId: String)
     case updateUser(params: UserUpdateParams, apiToken: String, appId: String)
 }
 
-// BRODY : 중간에 아이디 바뀌면 apiToken, baseURL다 바뀌어야 됨.
-// apiToken, appID를 Singleton에서 들고있으면 불가능함.(중간에 다 삭제를 하던지 해야됨)
-// 번거롭지만 Request할 때 apiToken과 appID를 넣어야 될듯
-// 장점 : 5개의 Update 요청을 보내고 계정바꿔서 2개의 Update 요청을 보내면 각각의 appID가 잘 update 될것임.
+// BRODY : 중간에 아이디 바뀌면 apiToken, baseURL다 바뀌어야 되기 때문에 apiToken, appID를 파라미터로 전달하기로 결정
 extension SendbirdRouter: TargetType {
 
     var apiToken: String {
-        
         switch self {
         case .getUsers(_, let apiToken, _):
             return apiToken
         case .getUser(_, let apiToken, _):
             return apiToken
         case .createUser(_, let apiToken, _):
+            return apiToken
+        case .createUsers(_, let apiToken, _):
             return apiToken
         case .updateUser(_, let apiToken, _):
             return apiToken
@@ -44,6 +43,8 @@ extension SendbirdRouter: TargetType {
             applicationId = appId
         case .createUser(_, _, let appId):
             applicationId = appId
+        case .createUsers(_, _, let appId):
+            applicationId = appId
         case .updateUser(_, _, let appId):
             applicationId = appId
         }
@@ -58,7 +59,7 @@ extension SendbirdRouter: TargetType {
             return "/users"
         case .getUser(let userId, _, _):
             return "/users/\(userId)"
-        case .createUser:
+        case .createUser, .createUsers:
             return "/users"
         case .updateUser(let params, _, _):
             return "/users/\(params.userId)"
@@ -71,7 +72,7 @@ extension SendbirdRouter: TargetType {
             return .get
         case .getUser:
             return .get
-        case .createUser:
+        case .createUser, .createUsers:
             return .post
         case .updateUser:
             return .put
@@ -91,6 +92,7 @@ extension SendbirdRouter: TargetType {
 
         case .getUser:
             return .requestPlain
+            
         case .createUser(let params, _, _):
             let parameters = [
                 "user_id": params.userId,
@@ -99,7 +101,14 @@ extension SendbirdRouter: TargetType {
             ]
 
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+            
+        case .createUsers(let params, _, _):
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            guard let encodedData = try? encoder.encode(params) else { return .requestPlain }
 
+            return .requestData(encodedData)
+            
         case .updateUser(let params, _, _):
             var parameters = [
                 "user_id": params.userId

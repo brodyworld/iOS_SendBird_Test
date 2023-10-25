@@ -10,7 +10,6 @@ import Foundation
 public typealias UserResult = Result<(SBUser), Error>
 public typealias UsersResult = Result<[SBUser], Error>
 
-// BRODY : 개인적으로 SBUserManagerProtocol로 이름을 바꾸고 구현체를 SBUserManager로 쓰고 싶었음.
 /// Sendbird User Managent를 위한 SDK interface입니다.
 /// 사용될땐 SBUserManager.shared처럼 singleton으로 선언이 되어서 사용이 됩니다. 
 public protocol SBUserManager {

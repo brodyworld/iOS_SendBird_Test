@@ -15,19 +15,21 @@
 		52347BFC2ADA63FB00AC2D94 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52347BF52ADA63FB00AC2D94 /* UserManager.swift */; };
 		52347C092ADA6C3500AC2D94 /* UserStorageBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52347C082ADA6C3500AC2D94 /* UserStorageBaseTests.swift */; };
 		52CD185E2ADACE5E0097F9E1 /* UserManagerBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD185D2ADACE5E0097F9E1 /* UserManagerBaseTests.swift */; };
+		B22C6AFC2AE94BFD000FB062 /* CustomNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22C6AFB2AE94BFD000FB062 /* CustomNetworkRequest.swift */; };
 		B25C13032AE35D3B00B7CD78 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = B25C13022AE35D3B00B7CD78 /* Moya */; };
 		B25C130A2AE35FC400B7CD78 /* SendbirdRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C13092AE35FC400B7CD78 /* SendbirdRouter.swift */; };
 		B25C130D2AE360DF00B7CD78 /* UserManagerImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C130C2AE360DF00B7CD78 /* UserManagerImplement.swift */; };
 		B25C130F2AE3617500B7CD78 /* UserStorageImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C130E2AE3617500B7CD78 /* UserStorageImplement.swift */; };
 		B25C13112AE3619600B7CD78 /* NetworkClientImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C13102AE3619600B7CD78 /* NetworkClientImplement.swift */; };
-		B25C13132AE3683000B7CD78 /* ApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C13122AE3683000B7CD78 /* ApiTests.swift */; };
+		B25C13132AE3683000B7CD78 /* MoyaRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C13122AE3683000B7CD78 /* MoyaRouterTests.swift */; };
 		B25C13162AE36A3000B7CD78 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25C13152AE36A3000B7CD78 /* UserEntity.swift */; };
 		B282F52B2AE3B88D00A9A27F /* JSONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F52A2AE3B88D00A9A27F /* JSONDecoder+Extension.swift */; };
 		B282F52D2AE3B97400A9A27F /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F52C2AE3B97400A9A27F /* APIError.swift */; };
 		B282F5312AE3BE3E00A9A27F /* UserListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F5302AE3BE3E00A9A27F /* UserListEntity.swift */; };
-		B282F5332AE3CCD600A9A27F /* MoyaProvider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F5322AE3CCD600A9A27F /* MoyaProvider+Extension.swift */; };
-		B282F5372AE3FDFF00A9A27F /* UserManagerBase2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F5362AE3FDFF00A9A27F /* UserManagerBase2Tests.swift */; };
+		B282F5372AE3FDFF00A9A27F /* CustomManagerBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F5362AE3FDFF00A9A27F /* CustomManagerBaseTests.swift */; };
 		B282F53A2AE3FF6B00A9A27F /* SBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B282F5392AE3FF6B00A9A27F /* SBError.swift */; };
+		B2E9068C2AE602BF004937FC /* CustomUserStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E9068B2AE602BF004937FC /* CustomUserStorageTests.swift */; };
+		B2EA86C72AE62FF70001D17D /* ActorUserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EA86C62AE62FF70001D17D /* ActorUserStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,19 +53,21 @@
 		52347BF82ADA63FB00AC2D94 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		52347C082ADA6C3500AC2D94 /* UserStorageBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageBaseTests.swift; sourceTree = "<group>"; };
 		52CD185D2ADACE5E0097F9E1 /* UserManagerBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerBaseTests.swift; sourceTree = "<group>"; };
+		B22C6AFB2AE94BFD000FB062 /* CustomNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNetworkRequest.swift; sourceTree = "<group>"; };
 		B25C13092AE35FC400B7CD78 /* SendbirdRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendbirdRouter.swift; sourceTree = "<group>"; };
 		B25C130C2AE360DF00B7CD78 /* UserManagerImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerImplement.swift; sourceTree = "<group>"; };
 		B25C130E2AE3617500B7CD78 /* UserStorageImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageImplement.swift; sourceTree = "<group>"; };
 		B25C13102AE3619600B7CD78 /* NetworkClientImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientImplement.swift; sourceTree = "<group>"; };
-		B25C13122AE3683000B7CD78 /* ApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTests.swift; sourceTree = "<group>"; };
+		B25C13122AE3683000B7CD78 /* MoyaRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaRouterTests.swift; sourceTree = "<group>"; };
 		B25C13152AE36A3000B7CD78 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		B282F52A2AE3B88D00A9A27F /* JSONDecoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extension.swift"; sourceTree = "<group>"; };
 		B282F52C2AE3B97400A9A27F /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		B282F5302AE3BE3E00A9A27F /* UserListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListEntity.swift; sourceTree = "<group>"; };
-		B282F5322AE3CCD600A9A27F /* MoyaProvider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+Extension.swift"; sourceTree = "<group>"; };
 		B282F5342AE3FA2100A9A27F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B282F5362AE3FDFF00A9A27F /* UserManagerBase2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerBase2Tests.swift; sourceTree = "<group>"; };
+		B282F5362AE3FDFF00A9A27F /* CustomManagerBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomManagerBaseTests.swift; sourceTree = "<group>"; };
 		B282F5392AE3FF6B00A9A27F /* SBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBError.swift; sourceTree = "<group>"; };
+		B2E9068B2AE602BF004937FC /* CustomUserStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserStorageTests.swift; sourceTree = "<group>"; };
+		B2EA86C62AE62FF70001D17D /* ActorUserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorUserStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +128,6 @@
 			children = (
 				B282F5352AE3FDF200A9A27F /* Custom */,
 				52347BEA2ADA63F200AC2D94 /* SendbirdUserManagerTests.swift */,
-				B25C13122AE3683000B7CD78 /* ApiTests.swift */,
 			);
 			path = SendbirdUserManagerTests;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 		B25C13062AE35FA500B7CD78 /* Usecase */ = {
 			isa = PBXGroup;
 			children = (
+				B25C130C2AE360DF00B7CD78 /* UserManagerImplement.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -185,6 +189,9 @@
 		B25C13072AE35FAF00B7CD78 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				B22C6AFB2AE94BFD000FB062 /* CustomNetworkRequest.swift */,
+				B25C130E2AE3617500B7CD78 /* UserStorageImplement.swift */,
+				B25C13102AE3619600B7CD78 /* NetworkClientImplement.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -200,9 +207,7 @@
 		B25C130B2AE360AF00B7CD78 /* Implements */ = {
 			isa = PBXGroup;
 			children = (
-				B25C130C2AE360DF00B7CD78 /* UserManagerImplement.swift */,
-				B25C130E2AE3617500B7CD78 /* UserStorageImplement.swift */,
-				B25C13102AE3619600B7CD78 /* NetworkClientImplement.swift */,
+				B2EA86C62AE62FF70001D17D /* ActorUserStorage.swift */,
 			);
 			path = Implements;
 			sourceTree = "<group>";
@@ -229,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				B282F52A2AE3B88D00A9A27F /* JSONDecoder+Extension.swift */,
-				B282F5322AE3CCD600A9A27F /* MoyaProvider+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -237,7 +241,9 @@
 		B282F5352AE3FDF200A9A27F /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				B282F5362AE3FDFF00A9A27F /* UserManagerBase2Tests.swift */,
+				B25C13122AE3683000B7CD78 /* MoyaRouterTests.swift */,
+				B282F5362AE3FDFF00A9A27F /* CustomManagerBaseTests.swift */,
+				B2E9068B2AE602BF004937FC /* CustomUserStorageTests.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -366,7 +372,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B25C13162AE36A3000B7CD78 /* UserEntity.swift in Sources */,
-				B282F5332AE3CCD600A9A27F /* MoyaProvider+Extension.swift in Sources */,
 				B25C130A2AE35FC400B7CD78 /* SendbirdRouter.swift in Sources */,
 				52347BF92ADA63FB00AC2D94 /* Models.swift in Sources */,
 				B25C130F2AE3617500B7CD78 /* UserStorageImplement.swift in Sources */,
@@ -377,9 +382,11 @@
 				B25C13112AE3619600B7CD78 /* NetworkClientImplement.swift in Sources */,
 				B25C130D2AE360DF00B7CD78 /* UserManagerImplement.swift in Sources */,
 				52347BFC2ADA63FB00AC2D94 /* UserManager.swift in Sources */,
+				B22C6AFC2AE94BFD000FB062 /* CustomNetworkRequest.swift in Sources */,
 				52347C092ADA6C3500AC2D94 /* UserStorageBaseTests.swift in Sources */,
 				B282F5312AE3BE3E00A9A27F /* UserListEntity.swift in Sources */,
 				52347BFB2ADA63FB00AC2D94 /* UserStorage.swift in Sources */,
+				B2EA86C72AE62FF70001D17D /* ActorUserStorage.swift in Sources */,
 				B282F52D2AE3B97400A9A27F /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,8 +395,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B25C13132AE3683000B7CD78 /* ApiTests.swift in Sources */,
-				B282F5372AE3FDFF00A9A27F /* UserManagerBase2Tests.swift in Sources */,
+				B25C13132AE3683000B7CD78 /* MoyaRouterTests.swift in Sources */,
+				B2E9068C2AE602BF004937FC /* CustomUserStorageTests.swift in Sources */,
+				B282F5372AE3FDFF00A9A27F /* CustomManagerBaseTests.swift in Sources */,
 				52347BEB2ADA63F200AC2D94 /* SendbirdUserManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

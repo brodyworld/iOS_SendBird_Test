@@ -10,7 +10,11 @@ import Moya
 
 struct NetworkClientImplement: SBNetworkClient {
 //    let provider = MoyaProvider<SendbirdRouter>()
-    let provider = MoyaProvider<SendbirdRouter>(plugins: [NetworkLoggerPlugin()])
+    
+    let provider = MoyaProvider<SendbirdRouter>(
+        callbackQueue: DispatchQueue.global(qos: .utility),
+        plugins: [NetworkLoggerPlugin()]
+    )
 
     func request<R>(request: R, completionHandler: @escaping (Result<R.Response, Error>) -> Void) where R : Request {
         
@@ -29,23 +33,6 @@ struct NetworkClientImplement: SBNetworkClient {
             }
             
         }
-    }
-    
-    func request<R: Request>(request: R) async -> (Result<R.Response, Error>) {
-        let result = await provider.request(request.router)
-        switch result {
-        case .success(let sucess):
-            let decodedReponse = JSONDecoder().decodeResponse(R.Response.self, from: sucess.data)
-            switch decodedReponse {
-            case .success(let decodeSuccess):
-                return .success(decodeSuccess)
-            case .failure(let decodeError):
-                return .failure(decodeError)
-            }
-        case .failure(let error):
-            return .failure(error)
-        }
-
     }
     
 }

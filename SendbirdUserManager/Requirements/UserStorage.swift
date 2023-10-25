@@ -12,6 +12,8 @@ import Foundation
 public protocol SBUserStorage {
     init()
     
+    func updateAppicationId(_ appId: String)
+    
     /// 해당 User를 저장 또는 업데이트합니다
     func upsertUser(_ user: SBUser)
     

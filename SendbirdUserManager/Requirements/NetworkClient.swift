@@ -12,6 +12,7 @@ public protocol Request {
     associatedtype Response: Codable // BRODY : Codable 추가
 
     var router: SendbirdRouter { get set }
+    var date: Date { get }
 }
 
 public protocol SBNetworkClient {
@@ -23,27 +24,4 @@ public protocol SBNetworkClient {
         completionHandler: @escaping (Result<R.Response, Error>) -> Void
     )
     
-    /// BRODY :  async await 를 위해 추가
-    func request<R: Request>(request: R) async -> (Result<R.Response, Error>)
-
-}
-
-struct CreateUserRequest: Request {
-    typealias Response = UserEntity
-    var router: SendbirdRouter
-}
-
-struct UpdateUserRequest: Request {
-    typealias Response = UserEntity
-    var router: SendbirdRouter
-}
-
-struct GetUserRequest: Request {
-    typealias Response = UserEntity
-    var router: SendbirdRouter
-}
-
-struct GetUsersRequest: Request {
-    typealias Response = UserListEntity
-    var router: SendbirdRouter
 }
