@@ -115,7 +115,7 @@
 				52347C002ADA646F00AC2D94 /* Tests */,
 				B282F5282AE3B87300A9A27F /* Base */,
 				B25C13052AE35F9200B7CD78 /* DataLayer */,
-				B25C13042AE35D4B00B7CD78 /* RepositoryLayer */,
+				B25C13042AE35D4B00B7CD78 /* DomainLayer */,
 				52347BFD2ADA644F00AC2D94 /* Requirements */,
 				522B6D982ADAC21300FEE2B4 /* SendbirdUserManager.h */,
 				B282F5342AE3FA2100A9A27F /* README.md */,
@@ -126,7 +126,7 @@
 		52347BE92ADA63F200AC2D94 /* SendbirdUserManagerTests */ = {
 			isa = PBXGroup;
 			children = (
-				B282F5352AE3FDF200A9A27F /* Custom */,
+				B282F5352AE3FDF200A9A27F /* CustomTest */,
 				52347BEA2ADA63F200AC2D94 /* SendbirdUserManagerTests.swift */,
 			);
 			path = SendbirdUserManagerTests;
@@ -160,12 +160,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B25C13042AE35D4B00B7CD78 /* RepositoryLayer */ = {
+		B25C13042AE35D4B00B7CD78 /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
 				B25C13062AE35FA500B7CD78 /* Usecase */,
 			);
-			path = RepositoryLayer;
+			path = DomainLayer;
 			sourceTree = "<group>";
 		};
 		B25C13052AE35F9200B7CD78 /* DataLayer */ = {
@@ -238,14 +238,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		B282F5352AE3FDF200A9A27F /* Custom */ = {
+		B282F5352AE3FDF200A9A27F /* CustomTest */ = {
 			isa = PBXGroup;
 			children = (
 				B25C13122AE3683000B7CD78 /* MoyaRouterTests.swift */,
 				B282F5362AE3FDFF00A9A27F /* CustomManagerBaseTests.swift */,
 				B2E9068B2AE602BF004937FC /* CustomUserStorageTests.swift */,
 			);
-			path = Custom;
+			path = CustomTest;
 			sourceTree = "<group>";
 		};
 		B282F5382AE3FF6000A9A27F /* Error */ = {

@@ -9,8 +9,6 @@ import Foundation
 import Moya
 
 struct NetworkClientImplement: SBNetworkClient {
-//    let provider = MoyaProvider<SendbirdRouter>()
-    
     let provider = MoyaProvider<SendbirdRouter>(
         callbackQueue: DispatchQueue.global(qos: .utility),
         plugins: [NetworkLoggerPlugin()]

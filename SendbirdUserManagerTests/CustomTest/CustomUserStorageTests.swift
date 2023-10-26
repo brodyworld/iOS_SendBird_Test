@@ -31,7 +31,7 @@ open class CustomUserStorageTests: XCTestCase {
     
 }
 
-// MARK: 기본제공 Test
+// MARK: 기본 제공하는 테스트.
 extension CustomUserStorageTests {
 
     public func testSetUser() {

@@ -1,22 +1,51 @@
 #  Sendbird Test
 
+## 과제 목표
+Sendbird API를 이용하여 유저를 관리하는 SDK를 완성시키자.
+
+## 아키텍처 
+SDK의 아키텍처는 사용해본것이 없어서 기존에 사용하던 클린아키텍처에서 Present Layer을 제외한 Data Layer, Domain Layer로 아키텍처를 구성했습니다.
+- Base Folder
+    - 앱에서 전반적으로 사용되는 Extension, SBError등이 모여있습니다.
+    - APIError
+        - API에서 실패했을때 Decoding 하여 Custom Error로 만들기 위해 사용됩니다.
+    - SBError
+        - API를 호출하기전에 SDK에서 오류를 발생시켜 서버의 과부하를 최소화시킵니다.
+- Data Layer
+    - 서버와 통신하거나 내부 메모리 캐시데이터를 데이터를 가져오는데 필요한 코드가 모여있습니다.
+    - Entity, Router, Repository를 제공합니다.
+    - SBUserStorage를 구현한 UserStorageImplement를 제공합니다.
+    - SBNetworkClient를 구현한 NetworkClientImplement를 제공합니다.
+    - Request protocol을 채택하는 RequestType을 제공하는 CustomNetworkRequest이 존재합니다.
+    - API에서 Decoding되는 Entity를 제공합니다.
+    - Moya Library를 사용하여 SendbirRouter를 제공합니다.
+- Domain Layer
+    - SBUserManager를 구현한 UserManagerImplement를 제공합니다.
+- CustomTest
+    - MoyaRouterTests
+        - API가 잘 작동하는지 확인하기 위한 Test입니다.
+    - CustomManagerBaseTests
+        - UserManagerBaseTests를 테스트하는 도중 추가적으로 테스트해보고 싶은것이 있어 개발한 Test입니다.
+    - CustomUserStorageTests
+        - UserStorageBaseTests를 테스트하는 도중 추가적으로 테스트해보고 싶은것이 있어 개발한 Test입니다.
 
 
-
-### 해야되는것
-- jwt 추가
-- Platform API 응답을 in-memory cache를 통해 SDK 내에 캐싱 
-- createUser 성공 시 캐시
-- getUser 캐시에서 불러오고 없으면 GET 캐시 저장
-- getUsers 캐시에 저장하고 Limit 10
-- create, upsert할 때 user_id, profile, nickname 길이 확인해서 에러 떨궈주자.
-
-
-### 완료
-
+### 과제하면서 고민했던 것들
+- 현재 API를 호출할때마다 apiToken, appID를 파라미터로 전달하고 있습니다.
+    - 이유는 중간에 아이디가 바뀌는 경우가 생기면 apiToken, baseURL다 바뀌어야 되기 때문에 apiToken, appID를 파라미터로 전달하기로 결정했는데 괜찮은 방법이있을까 고민했습니다.
+- Request에 Date를 추가하여 POST는 1초에 한번 GET은 1초에 최대 10번만 호출하게 처리했습니다.
+- ActorUserStorage 
+    - thread safe와 비동기를 위해서 애플에서 제공하는 actor을 사용하면 안정성이 올라갈거 같았지만 protocol과 사용법을 너무 많이 변경해야 되서 개발하다가 중단하였습니다.
+- actor을 사용하지 않게되면서 Custom DispatchQueue를 사용했습니다.
+- UserStorageImplement 
+    - 만약 한번에 여러개의 AppId의 유저를 컨트롤하는 경우가 생길 수도 있을거 같아서 NSCache에 appId를 키로 저장합니다.
+    - users는 key는 userId, value는 SBUser를 저장하는 Dictionary(Hashtable)형태로 저장합니다.
+        - userId로 유저를 받아올 때 해시테이블이기 때문에 속도가 빠릅니다. 
+        - loop문을 사용할 수 있습니다
+        - Array처럼 순서를 보장하지 않아도 됩니다.
 
 ### 과제하면서 좋았던점
-- 보통 과제는 UI를 만드는 과제가 많았는데 SDK를 개발하는 과제여서 신선해서 재밌었다.
+- 보통 과제는 UI를 만드는 과제가 많았는데 SDK를 개발하는 과제여서 신선한 경험을 할 수 있어서 재밌었습니다.
 특히 Test를 돌리는게 재밌었으며 멀티쓰레드 관련해서 공부하는게 좋았음.
 
 

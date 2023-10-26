@@ -210,6 +210,7 @@ open class CustomManagerBaseTests: XCTestCase {
         
 }
 
+// MARK: 기본 제공하는 테스트.
 extension CustomManagerBaseTests {
     
     public func testInitApplicationWithDifferentAppIdClearsData() {
